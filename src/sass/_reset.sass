@@ -1,0 +1,128 @@
+*
+  margin: 0
+  padding: 0
+
+ul, ol, dl, p, h1, h2, h3, h4, h5, h6, address, form, table, blockquote, applet, embed, object, iframe, frameset
+  margin: 0 0 14px
+
+html, body, div, span, applet, embed, object, iframe, frameset, p, q, blockquote, sub, sup, a, abbr, acronym, font, img, small, center, h1, h2, h3, h4, h5, h6, b, strong, big, u, ins, i, cite, em, var, dfn, address, s, strike, del, dl, dt, dd, ol, ul, li, pre, code, kbd, samp, tt, fieldset, legend, form, label, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, menu, nav, section, summary, time, mark, audio, video
+  border: 0
+  background: none
+
+body
+  background: #fff
+  color: #000
+  font: 14px/1.7 'PT Sans', Arial, Helvetica, sans-serif
+
+a
+  color: #ff0
+  text-decoration: none
+  &:hover, &:focus
+    color: #f00
+    text-decoration: underline
+  &:active
+    background-color: transparent
+
+input, textarea, select
+  font: 100% arial,sans-serif
+  vertical-align: middle
+  color: #ccc
+  overflow: auto
+
+label
+  vertical-align: middle
+
+input[type=submit]:hover
+  cursor: pointer
+
+/* Placeholder reset style */
+
+\::-webkit-input-placeholder
+  /* WebKit browsers */
+  color: #ccc
+
+\:-moz-placeholder
+  /* Mozilla Firefox 4 to 18 */
+  color: #ccc
+
+\::-moz-placeholder
+  /* Mozilla Firefox 19+ */
+  color: #ccc
+  opacity: 1
+
+\:-ms-input-placeholder
+  /* Internet Explorer 10+ */
+  color: #ccc
+
+button, input
+  width: auto
+  overflow: visible
+
+h1, h2, h3, h4, h5, h6, b, strong, th
+  font-weight: bold
+
+h1
+  font-size: 200%
+
+h2
+  font-size: 150%
+
+h3
+  font-size: 120%
+
+h4
+  font-size: 110%
+
+h5
+  font-size: 100%
+
+h6
+  font-size: 90%
+
+i, cite, em, var, dfn, address
+  font-style: italic
+
+u, ins
+  text-decoration: underline
+
+s, strike, del
+  text-decoration: line-through
+
+blockquote
+  quotes: none
+  &:before, &:after
+    quotes: none
+
+q
+  quotes: none
+  &:before, &:after
+    quotes: none
+
+blockquote
+  &:before, &:after
+    content: ''
+
+q
+  &:before, &:after
+    content: ''
+
+table, caption, tbody, tfoot, thead, tr, th, td
+  border-collapse: collapse
+  border-spacing: 0
+
+th, td
+  border: 1px solid #ccc
+  padding: 3px 7px
+  text-align: left
+  vertical-align: top
+
+th
+  border-color: #999
+  text-align: center
+  vertical-align: middle
+
+ul li, ol li
+  list-style-position: inside
+
+ul li
+  list-style-type: disc
