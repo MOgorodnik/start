@@ -4,16 +4,20 @@ var reload = browserSync.reload; // var for short "browserSync.reload"
 var gulp = require('gulp'); // Подключаем Gulp
 var sass = require('gulp-sass'); //Подключаем Sass пакет
 var wiredep = require('wiredep').stream;
+var cssnano = require('gulp-cssnano');
+var autoprefixer = require('gulp-autoprefixer');
+var useref = require('gulp-useref');
+var gulpif = require('gulp-if');
 
 
 // SERVER CONFIG
 var config = {
-	server: {// Определяем параметры сервера
-		baseDir: "src" // Директория для сервера
+	server: {// server parameters
+		baseDir: "src" // directory
 		// index: "index.html"
 	},
 	port: 9090,
-    // notify: false // Отключаем уведомления
+    notify: false // Отключаем уведомления
 };
 
 // Basic Gulp task syntax
@@ -27,17 +31,9 @@ gulp.task('serve', function() {// Create task serve
     browserSync.init(config); // Init browser Sync
 });
 
-// DIMA
-// gulp.task('sass', function() {
-//     return gulp.src('src/sass/**/*.scss')
-//         .pipe(sass())
-//         .pipe(gulp.dest('src/css'))
-//         .pipe(browserSync.reload({ stream: true }))
-// });
-
 // MAX
 gulp.task('sass', function () {
-    return gulp.src('src/scss/**/*.scss')
+    return gulp.src('src/scss/**/*.+(scss|sass)')
         .pipe(sass())
         .pipe(gulp.dest('src/css'))
         .pipe(browserSync.stream());
@@ -45,7 +41,17 @@ gulp.task('sass', function () {
 gulp.task('sass:watch', function () {
     gulp.watch('src/scss/**/*.scss', ['sass']);
 });
-
+gulp.task('sass:build', function () {
+    return gulp.src('src/scss/**/*.+(scss|sass)')
+        .pipe(sass.sync().on('error', sass.logError))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions', 'IE 11']
+        }))
+        .pipe(useref())
+        // .pipe(cssnano())
+        .pipe(gulpif('*.css', cssnano()))
+        .pipe(gulp.dest('build/css'));
+});
 
 
 // BOWER INJECT CSS&JS ROUTE FROM PLUGINS
