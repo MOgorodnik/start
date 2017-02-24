@@ -12,3 +12,4 @@ built
 img/*.*
 font/*.*
 src/bower_components
+00gulpfile.js
