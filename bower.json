@@ -22,11 +22,9 @@
     "bootstrap": "#3.3.7",
     "font-awesome": "",
     "bootstrap-validator": "",
-    "slick-carousel": "",
     "jquery.maskedinput": "",
-    "magnific-popup": "",
-    "selectize": "",
-    "angular": "^1.6.2"
+    "angular": "^1.6.2",
+    "magnific-popup": "^1.1.0"
   },
   "overrides": {
     "bootstrap": {

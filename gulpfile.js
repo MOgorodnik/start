@@ -3,6 +3,7 @@ var browserSync = require('browser-sync'); // Подключаем Browser Sync
 var reload = browserSync.reload; //
 var gulp = require('gulp'); // Подключаем Gulp
 var sass = require('gulp-sass'); //Подключаем Sass пакет,
+var wiredep = require('wiredep').stream;
 
 
 // SERVER CONFIG
@@ -20,12 +21,12 @@ gulp.task('hi', function() {
 	console.log('Hello Master!');
 });
 
+
 // WORKING START BROWSER-SYNC SERVER
 //**********************************************************************
 gulp.task('serve', function() {// Создаем таск serve
-	bs(config); // Выполняем browser Sync
+    browserSync(config); // Выполняем browser Sync
 });
-
 
 gulp.task('sass', function() {
     return gulp.src('src/sass/**/*.scss')
@@ -34,10 +35,18 @@ gulp.task('sass', function() {
         .pipe(browserSync.reload({ stream: true }))
 });
 
-gulp.task('watch', ['server', 'sass'], function() {
+
+gulp.task('bower', function () {
+    gulp.src('src/index.html')
+        .pipe(wiredep())
+        .pipe(gulp.dest('src'))
+});
+
+gulp.task('watch', ['serve', 'sass'], function() {
     gulp.watch('src/sass/**/*.scss', ['sass']);
     gulp.watch('src/**/*.html', reload);
     gulp.watch('src/js/**/*.js', reload);
+    gulp.watch('bower.json', ['bower']);
 });
 
 gulp.task('default', ['watch']);
