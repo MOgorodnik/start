@@ -1,24 +1,4 @@
-$('.partner-carousel').slick({
-	dots: false,
-	slidesToShow: 6,
-	responsive: [
-		{
-			breakpoint: 768,
-			settings: {
-				arrows: true,
-				centerMode: true,
-				centerPadding: '0',
-				slidesToShow: 1
-			}
-		},
-		{
-			breakpoint: 480,
-			settings: {
-				// arrows: false,
-				centerMode: true,
-				centerPadding: '0',
-				slidesToShow: 1
-			}
-		}
-	]
-});
+document.getElementById("p2").style.color = "orange";
+document.getElementById("p2").style.fontFamily = "Arial";
+document.getElementById("p2").style.fontSize = "100px";
+document.getElementById("p2").style.textAlign = "center";

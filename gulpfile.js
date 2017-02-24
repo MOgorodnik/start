@@ -13,7 +13,7 @@ var config = {
 		// index: "index.html"
 	},
 	port: 9090,
-    notify: false // Отключаем уведомления
+    // notify: false // Отключаем уведомления
 };
 
 // Basic Gulp task syntax
