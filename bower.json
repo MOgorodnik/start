@@ -22,9 +22,7 @@
     "bootstrap": "#3.3.7",
     "font-awesome": "",
     "bootstrap-validator": "",
-    "jquery.maskedinput": "",
-    "angular": "^1.6.2",
-    "magnific-popup": "^1.1.0"
+    "jquery.maskedinput": ""
   },
   "overrides": {
     "bootstrap": {
