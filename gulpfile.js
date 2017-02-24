@@ -23,12 +23,11 @@ gulp.task('hi', function() {
 
 
 // START BROWSER-SYNC SERVER
-//**********************************************************************
-gulp.task('serve', function() {// Создаем таск serve
-    browserSync.init(config); // Выполняем browser Sync
+gulp.task('serve', function() {// Create task serve
+    browserSync.init(config); // Init browser Sync
 });
 
-/* DIMA */
+// DIMA
 // gulp.task('sass', function() {
 //     return gulp.src('src/sass/**/*.scss')
 //         .pipe(sass())
@@ -36,7 +35,7 @@ gulp.task('serve', function() {// Создаем таск serve
 //         .pipe(browserSync.reload({ stream: true }))
 // });
 
-/* MAX */
+// MAX
 gulp.task('sass', function () {
     return gulp.src('src/scss/**/*.scss')
         .pipe(sass())
@@ -49,7 +48,7 @@ gulp.task('sass:watch', function () {
 
 
 
-/* BOWER INJECT CSS&JS ROUTE FROM PLUGINS */
+// BOWER INJECT CSS&JS ROUTE FROM PLUGINS
 gulp.task('bower', function () {
     gulp.src('src/index.html')
         .pipe(wiredep())
@@ -59,7 +58,15 @@ gulp.task('bower:watch', function() {
     gulp.watch('bower.json', ['bower']);
 });
 
-/* DIMA */
+// create a task that ensures the `js` task is complete before
+// reloading browsers
+gulp.task('js-watch', ['js'], function (done) {
+    browserSync.reload();
+    done();
+});
+
+
+// DIMA
 // gulp.task('watch', ['serve', 'sass'], function() {
 //     gulp.watch('src/sass/**/*.scss', ['sass']);
 //     gulp.watch('src/**/*.html', reload);
@@ -68,11 +75,13 @@ gulp.task('bower:watch', function() {
 // });
 //
 // gulp.task('default', ['watch']);
-/* MAX */
+
+//  MAX
 gulp.task('watch', ['serve', 'bower', 'sass'], function () {
     gulp.watch("src/scss/*.scss", ['sass']);
     gulp.watch("src/*.html").on('change', browserSync.reload);
     gulp.watch('bower.json', ['bower']);
+    gulp.watch("src/js/*.js").on('change', browserSync.reload);
 });
 
 gulp.task('default', ['watch']);
