@@ -8,6 +8,7 @@ var cssnano = require('gulp-cssnano');
 var autoprefixer = require('gulp-autoprefixer');
 var useref = require('gulp-useref');
 var gulpif = require('gulp-if');
+var uglify = require('gulp-uglify');
 
 
 // SERVER CONFIG
@@ -64,23 +65,18 @@ gulp.task('bower:watch', function() {
     gulp.watch('bower.json', ['bower']);
 });
 
-// create a task that ensures the `js` task is complete before
-// reloading browsers
-gulp.task('js-watch', ['js'], function (done) {
-    browserSync.reload();
-    done();
+// Optimization Tasks
+// ------------------
+
+// Optimizing CSS and JavaScript
+gulp.task('useref', function() {
+
+    return gulp.src('src/*.html')
+        .pipe(useref())
+        // .pipe(gulpIf('*.js', uglify()))
+        .pipe(gulpif('*.css', cssnano()))
+        .pipe(gulp.dest('build'));
 });
-
-
-// DIMA
-// gulp.task('watch', ['serve', 'sass'], function() {
-//     gulp.watch('src/sass/**/*.scss', ['sass']);
-//     gulp.watch('src/**/*.html', reload);
-//     gulp.watch('src/js/**/*.js', reload);
-//     gulp.watch('bower.json', ['bower']);
-// });
-//
-// gulp.task('default', ['watch']);
 
 //  MAX
 gulp.task('watch', ['serve', 'bower', 'sass'], function () {
